@@ -9,5 +9,4 @@ public class VendingMachineDriver
 		// TODO Auto-generated method stub
 
 	}
-
 }
