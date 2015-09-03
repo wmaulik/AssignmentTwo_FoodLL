@@ -1,12 +1,12 @@
 /**
- * 
  * @author Writesh Maulik
  *
  */
 
-public class VendingMachine {
-
-	public VendingMachine() {
+public class FoodInfo 
+{
+	public FoodInfo() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 
