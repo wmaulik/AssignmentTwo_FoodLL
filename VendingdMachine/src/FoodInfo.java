@@ -14,7 +14,7 @@ public class FoodInfo
 	 * String Name
 	 * String nutrition
 	 * String Price
-	 * 
+	 * j
 	 */
 	public FoodInfo(String aName, String nutritionInfo, double aPrice)
 	{

@@ -9,7 +9,7 @@ public class Dispenser extends FoodInfo
 	
 	/**
 	 * constructor for dispenser item;
-	 * 
+	 * dispenser doesn't need location
 	 */
 	public Dispenser(String aName, String nutritionInfo, double aPrice)
 	{

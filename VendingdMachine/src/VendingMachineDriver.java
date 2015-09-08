@@ -17,10 +17,6 @@ public class VendingMachineDriver
 		Dispenser Chip = new Dispenser("Chip", "really fatty", 0.65);
 		snackMachine.fillDispenser(Chip, 0, 2);
 		snackMachine.fillDispenser(Chip, 0, 3);
-		snackMachine.fillDispenser(Pretzel, 1, 0);
-		snackMachine.fillDispenser(Pretzel, 1, 1);
-		snackMachine.fillDispenser(Chip, 1, 2);
-		snackMachine.fillDispenser(Chip, 1, 3);
 		snackMachine.readMachine();
 	}
 }
