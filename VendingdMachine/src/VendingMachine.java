@@ -32,7 +32,7 @@ public class VendingMachine
 			for (int column = 0; column < 4; column ++)
 			{
 				name = emptyMachine[row][column].getName();
-				if (column == 4)
+				if (column == 3)
 				{
 					System.out.print(name);
 				}
