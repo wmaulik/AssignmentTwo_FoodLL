@@ -5,39 +5,16 @@
 
 public class Dispenser extends FoodInfo
 {
-	private char row;
-	private char column;
 	private int quantity;
 	
 	/**
 	 * constructor for dispenser item;
 	 * 
 	 */
-	public Dispenser(String aName, String nutritionInfo, double aPrice, String location)
+	public Dispenser(String aName, String nutritionInfo, double aPrice)
 	{
 		super(aName, nutritionInfo, aPrice);
-		this.column = location.charAt(0);
-		this.row = location.charAt(1);
 		quantity = 20;
-	}
-	
-	/**
-	 * sets the location
-	 */
-	public void setLocation(String location)
-	{
-		this.column = location.charAt(0);
-		this.row = location.charAt(1);
-	}
-	
-	/**
-	 * gets the location 
-	 */
-	public String getLocation()
-	{
-		String location = "";
-		location = "" + this.column + this.row;
-		return location;
 	}
 	
 	/**
@@ -69,8 +46,8 @@ public class Dispenser extends FoodInfo
 	 */
 	public String toString()
 	{
-		return super.toString() + "location: " + this.getLocation() +
-				"remaining " + this.getName() + "s: " + this.getQuanitity();
+		return super.toString() + "location: " + "remaining " + this.getName() + "s: " 
+				+ this.getQuanitity();
 	}
 	
 }

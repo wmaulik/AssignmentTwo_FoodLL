@@ -10,7 +10,7 @@ public class VendingMachine
 	public VendingMachine() 
 	{
 		// TODO Auto-generated constructor stub
-		emptyMachine = new Dispenser [4][5];
+		emptyMachine = new Dispenser [5][4];
 	}
 	
 	/**
@@ -27,12 +27,12 @@ public class VendingMachine
 	public void readMachine()
 	{
 		String name = "";
-		for (int column = 0; column < 5; column ++)
+		for (int row = 0; row < 5; row ++)
 		{
-			for (int row = 0; row < 4; column ++)
+			for (int column = 0; column < 4; column ++)
 			{
 				name = emptyMachine[row][column].getName();
-				if (row == 4)
+				if (column == 3)
 				{
 					System.out.print(name);
 				}
