@@ -168,6 +168,64 @@ public class VendingMachine
 	}
 	
 	/**
+	 * lets you make purchases
+	 */
+	public boolean makePurchase(String location, double money)
+	{
+		double price = 0;
+		String rowName = location.substring(0,1);
+		int row = 0;
+		boolean inValidPurchase = false;
+		if (rowName.equalsIgnoreCase("a"))
+		{
+			row = 0;
+		}
+		else if (rowName.equalsIgnoreCase("b"))
+		{
+			row = 1;
+		}
+		else if (rowName.equalsIgnoreCase("c"))
+		{
+			row = 2;
+		}
+		else if (rowName.equalsIgnoreCase("d"))
+		{
+			row = 3;
+		}
+		else
+		{
+			row = 4;
+		}
+		
+		int column = 0;
+		String columnName = "";
+		columnName = location.substring(1);
+		column = Integer.parseInt(columnName);
+		price = this.emptyMachine[row][column].getPrice();
+		try
+		{
+			if ((money - price) < 0)
+			{
+				throw new Exception("not enough money");
+			}
+			this.emptyMachine[row][column].setQuantity(
+					this.emptyMachine[row][column].getQuanitity() - 1);
+			System.out.println(this.emptyMachine[row][column].getQuanitity());
+			System.out.println("you have bought " +
+					this.emptyMachine[row][column].getName());
+			System.out.printf("you paid %.2f%n", money);
+			money = money - price;
+			System.out.printf("your change is $ %.2f%n", money);
+		}
+		catch (Exception notEnoughMoney)
+		{
+			inValidPurchase = true;
+			System.out.println(notEnoughMoney.getMessage());
+		}
+		return inValidPurchase;
+	}
+	
+	/**
 	 * sets the time for vending machines
 	 */
 	public void setTime(int aTime)

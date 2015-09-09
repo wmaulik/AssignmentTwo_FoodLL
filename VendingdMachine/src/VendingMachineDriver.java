@@ -14,11 +14,13 @@ public class VendingMachineDriver
 	{
 		// TODO Auto-generated method stub
 		int time = 0;
-		boolean validLocation = false;
+		String location = "";
+		double money = 0;
+		//boolean validLocation = false;
+		boolean inValidPurchase = false;
 		int startChoice = 0;
 		boolean validStartChoice = false;
 		int chooseMachine = 0;
-		double money = 5.00;
 		VendingMachine snackMachine = new VendingMachine();
 		VendingMachine drinkMachine = new VendingMachine();
 		
@@ -70,7 +72,17 @@ public class VendingMachineDriver
 					+ snackMachine.getTime() + " hours.");
 			System.out.println("This is what the vending Machine offers:");
 			snackMachine.readMachine();
-			
+			System.out.println("Select which dispener to buy from.");
+			location = keyboard.nextLine();
+			System.out.println("This is what you have selected.");
+			snackMachine.getInfo(location);
+			do
+			{
+				System.out.println("Enter your money");
+				money = keyboard.nextDouble();
+				keyboard.nextLine();
+				inValidPurchase = snackMachine.makePurchase(location, money);
+			}while(inValidPurchase == true);
 		}
 		else
 		{
@@ -81,9 +93,19 @@ public class VendingMachineDriver
 					+ drinkMachine.getTime() + " hours.");
 			System.out.println("This is what the vending Machine offers:");
 			drinkMachine.readMachine();
-		}
-		
-		
+			System.out.println("Select which dispener to buy from.");
+			location = keyboard.nextLine();
+			System.out.println("This is what you have selected.");
+			drinkMachine.getInfo(location);
+			do
+			{
+				System.out.println("Enter your money");
+				money = keyboard.nextDouble();
+				keyboard.nextLine();
+				inValidPurchase = drinkMachine.makePurchase(location, money);
+			}while(inValidPurchase == true);
+			
+		}	
 	}
 	
 	/**
