@@ -21,6 +21,7 @@ public class VendingMachineDriver
 		int startChoice = 0;
 		boolean validStartChoice = false;
 		int chooseMachine = 0;
+		boolean keepOn = true;
 		VendingMachine snackMachine = new VendingMachine();
 		VendingMachine drinkMachine = new VendingMachine();
 		
@@ -62,50 +63,54 @@ public class VendingMachineDriver
 			}
 		}while (validStartChoice == false);
 		
-		chooseMachine = ((int) (Math.random()*2) + 1);
-		if (chooseMachine == 1)
+		while (keepOn == true)
 		{
-			time = ((int) (Math.random() * 200) + 1);
-			snackMachine.setTime(time);
-			drinkMachine.setTime(time);
-			System.out.println("You arrive at the snack vending machine at "
-					+ snackMachine.getTime() + " hours.");
-			System.out.println("This is what the vending Machine offers:");
-			snackMachine.readMachine();
-			System.out.println("Select which dispener to buy from.");
-			location = keyboard.nextLine();
-			System.out.println("This is what you have selected.");
-			snackMachine.getInfo(location);
-			do
+			chooseMachine = ((int) (Math.random()*2) + 1);
+			if (chooseMachine == 1)
 			{
-				System.out.println("Enter your money");
-				money = keyboard.nextDouble();
-				keyboard.nextLine();
-				inValidPurchase = snackMachine.makePurchase(location, money);
-			}while(inValidPurchase == true);
-		}
-		else
-		{
-			time = ((int) (Math.random() * 200) + 1);
-			snackMachine.setTime(time);
-			drinkMachine.setTime(time);
-			System.out.println("You arrive at the drink vending machine at "
-					+ drinkMachine.getTime() + " hours.");
-			System.out.println("This is what the vending Machine offers:");
-			drinkMachine.readMachine();
-			System.out.println("Select which dispener to buy from.");
-			location = keyboard.nextLine();
-			System.out.println("This is what you have selected.");
-			drinkMachine.getInfo(location);
-			do
+				time = ((int) (Math.random() * 200) + 1);
+				snackMachine.setTime(time);
+				drinkMachine.setTime(time);
+				System.out.println("You arrive at the snack vending machine at "
+						+ snackMachine.getTime() + " hours.");
+				System.out.println("This is what the vending Machine offers:");
+				snackMachine.readMachine();
+				System.out.println("Select which dispener to buy from.");
+				location = keyboard.nextLine();
+				System.out.println("This is what you have selected.");
+				snackMachine.getInfo(location);
+				do
+				{
+					System.out.println("Enter your money");
+					money = keyboard.nextDouble();
+					keyboard.nextLine();
+					inValidPurchase = snackMachine.makePurchase(location, money);
+				}while(inValidPurchase == true);
+				keepOn = snackMachine.turnOff(time);
+			}
+			else
 			{
-				System.out.println("Enter your money");
-				money = keyboard.nextDouble();
-				keyboard.nextLine();
-				inValidPurchase = drinkMachine.makePurchase(location, money);
-			}while(inValidPurchase == true);
-			
-		}	
+				time = ((int) (Math.random() * 200) + 1);
+				snackMachine.setTime(time);
+				drinkMachine.setTime(time);
+				System.out.println("You arrive at the drink vending machine at "
+						+ drinkMachine.getTime() + " hours.");
+				System.out.println("This is what the vending Machine offers:");
+				drinkMachine.readMachine();
+				System.out.println("Select which dispener to buy from.");
+				location = keyboard.nextLine();
+				System.out.println("This is what you have selected.");
+				drinkMachine.getInfo(location);
+				do
+				{
+					System.out.println("Enter your money");
+					money = keyboard.nextDouble();
+					keyboard.nextLine();
+					inValidPurchase = drinkMachine.makePurchase(location, money);
+				}while(inValidPurchase == true);
+				keepOn = drinkMachine.turnOff(time);
+			}
+		}		
 	}
 	
 	/**

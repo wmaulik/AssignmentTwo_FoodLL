@@ -210,7 +210,6 @@ public class VendingMachine
 			}
 			this.emptyMachine[row][column].setQuantity(
 					this.emptyMachine[row][column].getQuanitity() - 1);
-			System.out.println(this.emptyMachine[row][column].getQuanitity());
 			System.out.println("you have bought " +
 					this.emptyMachine[row][column].getName());
 			System.out.printf("you paid %.2f%n", money);
@@ -249,5 +248,21 @@ public class VendingMachine
 	public int getTime()
 	{
 		return this.time;
+	}
+	
+	/**
+	 * turns of machine for idling
+	 */
+	public boolean turnOff(int time)
+	{
+		boolean keepOn = true;
+		if (time > 130)
+		{
+			System.out.println("This machine has idled for " + time);
+			System.out.println("It is turning off.");
+			keepOn = false;
+			System.exit(0);
+		}
+		return keepOn;
 	}
 }
