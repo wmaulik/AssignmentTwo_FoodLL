@@ -76,8 +76,8 @@ public class FoodInfo
 	 */
 	public String toString()
 	{
-		return "Name: " + this.getName() + "/n"
-				+ "Nutrition Information: " + this.getNutrition() + "/n"
+		return "Name: " + this.getName() + "\n"
+				+ "Nutrition Information: " + this.getNutrition() + "\n"
 				+ "price $" + this.getPrice();
 	}
 }

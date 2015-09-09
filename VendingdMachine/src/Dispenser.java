@@ -5,10 +5,9 @@
 
 
 public class Dispenser extends FoodInfo
-{
-	
+{	
 	private int quantity;
-	
+
 	/**
 	 * constructor for dispenser item;
 	 * 
@@ -16,7 +15,7 @@ public class Dispenser extends FoodInfo
 	public Dispenser(String aName, String nutritionInfo, double aPrice)
 	{
 		super(aName, nutritionInfo, aPrice);
-		quantity = 20;
+		this.quantity = 20;
 	}
 	
 	/**
@@ -48,7 +47,7 @@ public class Dispenser extends FoodInfo
 	 */
 	public String toString()
 	{
-		return super.toString() + "/n" +
+		return super.toString() + "\n" +
 				"in stock: " + this.getQuanitity();
 	}
 	

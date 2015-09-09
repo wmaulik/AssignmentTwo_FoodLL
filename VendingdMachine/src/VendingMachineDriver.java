@@ -3,17 +3,87 @@
  *
  */
 
+import java.util.Scanner;
+
 public class VendingMachineDriver 
 {
+	
+	private static final Scanner keyboard = new Scanner(System.in);
+	
 	public static void main(String[] args) 
 	{
 		// TODO Auto-generated method stub
+		int time = 0;
+		boolean validLocation = false;
+		int startChoice = 0;
+		boolean validStartChoice = false;
+		int chooseMachine = 0;
+		double money = 5.00;
 		VendingMachine snackMachine = new VendingMachine();
 		VendingMachine drinkMachine = new VendingMachine();
-		snackMachine = fillSnackMachine();
-		drinkMachine = fillDrinkMachine();
-		drinkMachine.readMachine();
-		snackMachine.readMachine();
+		
+		do
+		{
+			System.out.println("What do you want to do?");
+			System.out.println("1. Start Fresh.");
+			System.out.println("2. Start from existing file.");
+			System.out.println("3. Quit.");
+			startChoice = keyboard.nextInt();
+			keyboard.nextLine();
+			
+			switch (startChoice)
+			{
+				case 1:
+				{
+					validStartChoice = true;
+					snackMachine = fillSnackMachine();
+					drinkMachine = fillDrinkMachine();
+					time = snackMachine.getTime();
+					break;
+				}
+				case 2:
+				{
+					validStartChoice = true;
+					break;
+				}
+				case 3:
+				{
+					validStartChoice = true;
+					System.exit(0);
+					break;
+				}
+				default:
+				{
+					System.out.println("Enter a valid item from the menu");
+					break;
+				}
+			}
+		}while (validStartChoice == false);
+		
+		chooseMachine = ((int) (Math.random()*2) + 1);
+		if (chooseMachine == 1)
+		{
+			time = ((int) (Math.random() * 200) + 1);
+			snackMachine.setTime(time);
+			drinkMachine.setTime(time);
+			System.out.println("You arrive at the snack vending machine at "
+					+ snackMachine.getTime() + " hours.");
+			System.out.println("This is what the vending Machine offers:");
+			snackMachine.readMachine();
+			
+		}
+		else
+		{
+			time = ((int) (Math.random() * 200) + 1);
+			snackMachine.setTime(time);
+			drinkMachine.setTime(time);
+			System.out.println("You arrive at the drink vending machine at "
+					+ drinkMachine.getTime() + " hours.");
+			System.out.println("This is what the vending Machine offers:");
+			drinkMachine.readMachine();
+		}
+		
+		
 	}
 	
 	/**
