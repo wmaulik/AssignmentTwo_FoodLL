@@ -3,8 +3,10 @@
  *
  */
 
+
 public class Dispenser extends FoodInfo
 {
+	
 	private int quantity;
 	
 	/**
@@ -46,8 +48,8 @@ public class Dispenser extends FoodInfo
 	 */
 	public String toString()
 	{
-		return super.toString() + "location: " + "remaining " + this.getName() + "s: " 
-				+ this.getQuanitity();
+		return super.toString() + "/n" +
+				"in stock: " + this.getQuanitity();
 	}
 	
 }

@@ -3,7 +3,7 @@
  *
  */
 
-public class FoodInfo 
+public class FoodInfo
 {
 	private String name;
 	private String nutrition;
@@ -76,7 +76,8 @@ public class FoodInfo
 	 */
 	public String toString()
 	{
-		return "Name: " + this.getName() + "Nutrition Information: " + this.getNutrition()
+		return "Name: " + this.getName() + "/n"
+				+ "Nutrition Information: " + this.getNutrition() + "/n"
 				+ "price $" + this.getPrice();
 	}
 }
