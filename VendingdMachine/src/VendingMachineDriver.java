@@ -68,7 +68,7 @@ public class VendingMachineDriver
 			chooseMachine = ((int) (Math.random()*2) + 1);
 			if (chooseMachine == 1)
 			{
-				time = ((int) (Math.random() * 200) + 1);
+				time = ((int) (Math.random() * 120) + 1);
 				snackMachine.setTime(time);
 				drinkMachine.setTime(time);
 				System.out.println("You arrive at the snack vending machine at "
@@ -90,7 +90,7 @@ public class VendingMachineDriver
 			}
 			else
 			{
-				time = ((int) (Math.random() * 200) + 1);
+				time = ((int) (Math.random() * 120) + 1);
 				snackMachine.setTime(time);
 				drinkMachine.setTime(time);
 				System.out.println("You arrive at the drink vending machine at "

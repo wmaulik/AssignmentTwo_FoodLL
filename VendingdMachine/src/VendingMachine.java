@@ -192,7 +192,7 @@ public class VendingMachine
 		{
 			row = 3;
 		}
-		else
+		else if (rowName.equalsIgnoreCase("e"))
 		{
 			row = 4;
 		}
@@ -229,6 +229,12 @@ public class VendingMachine
 	 */
 	public void setTime(int aTime)
 	{
+		int hour;
+		int minutes;
+		minutes = aTime % 60;
+		hour = (aTime / 60) * 100;
+		aTime = hour + minutes;
+		
 		if (this.time + aTime > 2400)
 		{
 			int remainingTime = 2400 - this.time;
@@ -239,6 +245,9 @@ public class VendingMachine
 		else
 		{
 			this.time = this.time + aTime;
+			minutes = this.time % 60;
+			hour = (aTime / 60) * 100;
+			this.time = hour + minutes;
 		}
 	}
 	
@@ -256,7 +265,7 @@ public class VendingMachine
 	public boolean turnOff(int time)
 	{
 		boolean keepOn = true;
-		if (time > 130)
+		if (time > 60)
 		{
 			System.out.println("This machine has idled for " + time);
 			System.out.println("It is turning off.");
