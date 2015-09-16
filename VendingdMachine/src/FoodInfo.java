@@ -1,10 +1,17 @@
+import java.io.Serializable;
+
 /**
  * @author Writesh Maulik
  *
  */
 
-public class FoodInfo
+
+public class FoodInfo implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3222232600479325465L;
 	private String name;
 	private String nutrition;
 	private double price;

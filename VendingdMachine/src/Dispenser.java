@@ -3,9 +3,14 @@
  *
  */
 
+import java.io.Serializable;
 
-public class Dispenser extends FoodInfo
+public class Dispenser extends FoodInfo implements Serializable
 {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2147409446373824895L;
 	private int quantity;
 
 	/**

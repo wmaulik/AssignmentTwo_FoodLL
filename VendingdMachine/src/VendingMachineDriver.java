@@ -217,7 +217,7 @@ public class VendingMachineDriver
 		Dispenser energyDrink = new Dispenser("Energy Drink", "electrolytes!", 2.25);
 		emptyMachine.fillDispenser(energyDrink, 4, 0);
 		emptyMachine.fillDispenser(energyDrink, 4, 1);
-		Dispenser water = new Dispenser("Water", "its water", 1.50);
+		Dispenser water = new Dispenser("Water", "it's water", 1.50);
 		emptyMachine.fillDispenser(water, 4, 2);
 		emptyMachine.fillDispenser(water, 4, 3);
 		
@@ -225,37 +225,36 @@ public class VendingMachineDriver
 	}
 	
 	/**
-	 * turns of machine for idling
+	 * turns off machine for idling
 	 */
 	public static void turnOff(int time, VendingMachine drinkMachine, 
 			VendingMachine snackMachine )
 	{
-		String vendingMachineInfo = "vendingMachine.records";
 		ObjectOutputStream outputStream = null;
 		
 		if (time > 60)
 		{
-			System.out.println("This machine has idled for " + time);
+			System.out.println("This machine has idled for " + time + " minutes.");
 			System.out.println("It is turning off.");
 			try
 			{
 				outputStream = new ObjectOutputStream(
-						new FileOutputStream(vendingMachineInfo));
+						new FileOutputStream("vendingMachine.records"));
 			}
 			catch (IOException e)
 			{
-				System.out.println("Error openning " + vendingMachineInfo);
+				System.out.println("Error openning " + "vendingMachine.records");
 			}
 			try
 			{
 				outputStream.writeObject(snackMachine);
 				outputStream.writeObject(drinkMachine);
-				System.out.println("records saved as " + vendingMachineInfo);
+				System.out.println("records saved as " + "vendingMachine.records");
 				outputStream.close();
 			}
 			catch(IOException e)
 			{
-				System.out.println("error writing to " + vendingMachineInfo);
+				System.out.println("error writing to " + "vendingMachine.records");
 			}
 			System.exit(0);
 		}
