@@ -217,7 +217,7 @@ public class VendingMachine implements Serializable
 					this.emptyMachine[row][column].getQuanitity() - 1);
 			System.out.println("you have bought " +
 					this.emptyMachine[row][column].getName());
-			System.out.printf("you paid %.2f%n", money);
+			System.out.printf("you paid $ %.2f%n", money);
 			money = money - price;
 			System.out.printf("your change is $ %.2f%n", money);
 		}
