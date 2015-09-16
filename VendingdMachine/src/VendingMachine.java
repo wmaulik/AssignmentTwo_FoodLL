@@ -3,9 +3,14 @@
  *
  */
 
+import java.io.Serializable;
 
-public class VendingMachine 
+public class VendingMachine implements Serializable
 {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Dispenser [][] emptyMachine;
 	private String location;
 	private int time;
@@ -259,19 +264,4 @@ public class VendingMachine
 		return this.time;
 	}
 	
-	/**
-	 * turns of machine for idling
-	 */
-	public boolean turnOff(int time)
-	{
-		boolean keepOn = true;
-		if (time > 60)
-		{
-			System.out.println("This machine has idled for " + time);
-			System.out.println("It is turning off.");
-			keepOn = false;
-			System.exit(0);
-		}
-		return keepOn;
-	}
 }

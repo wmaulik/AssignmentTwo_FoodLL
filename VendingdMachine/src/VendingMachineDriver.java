@@ -3,9 +3,15 @@
  *
  */
 
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-public class VendingMachineDriver 
+public class VendingMachineDriver
 {
 	
 	private static final Scanner keyboard = new Scanner(System.in);
@@ -16,7 +22,6 @@ public class VendingMachineDriver
 		int time = 0;
 		String location = "";
 		double money = 0;
-		//boolean validLocation = false;
 		boolean inValidPurchase = false;
 		int startChoice = 0;
 		boolean validStartChoice = false;
@@ -46,6 +51,28 @@ public class VendingMachineDriver
 				}
 				case 2:
 				{
+					ObjectInputStream inputStream = null;
+					try
+					{
+						inputStream = new ObjectInputStream(new FileInputStream
+								("vendingMachine.records"));
+					}
+					catch(IOException e)
+					{
+						System.out.println("error openning vendingMachine.records");
+					}
+					snackMachine = null;
+					drinkMachine = null;
+					try
+					{
+						snackMachine = (VendingMachine) inputStream.readObject();
+						drinkMachine = (VendingMachine) inputStream.readObject();
+						inputStream.close();
+					}
+					catch (Exception e)
+					{
+						System.out.println("Error reading vendingMachine.records");
+					}
 					validStartChoice = true;
 					break;
 				}
@@ -86,7 +113,7 @@ public class VendingMachineDriver
 					keyboard.nextLine();
 					inValidPurchase = snackMachine.makePurchase(location, money);
 				}while(inValidPurchase == true);
-				keepOn = snackMachine.turnOff(time);
+				VendingMachineDriver.turnOff(time, drinkMachine, snackMachine);
 			}
 			else
 			{
@@ -108,7 +135,7 @@ public class VendingMachineDriver
 					keyboard.nextLine();
 					inValidPurchase = drinkMachine.makePurchase(location, money);
 				}while(inValidPurchase == true);
-				keepOn = drinkMachine.turnOff(time);
+				VendingMachineDriver.turnOff(time, drinkMachine, snackMachine);
 			}
 		}		
 	}
@@ -195,5 +222,42 @@ public class VendingMachineDriver
 		emptyMachine.fillDispenser(water, 4, 3);
 		
 		return emptyMachine;
+	}
+	
+	/**
+	 * turns of machine for idling
+	 */
+	public static void turnOff(int time, VendingMachine drinkMachine, 
+			VendingMachine snackMachine )
+	{
+		String vendingMachineInfo = "vendingMachine.records";
+		ObjectOutputStream outputStream = null;
+		
+		if (time > 60)
+		{
+			System.out.println("This machine has idled for " + time);
+			System.out.println("It is turning off.");
+			try
+			{
+				outputStream = new ObjectOutputStream(
+						new FileOutputStream(vendingMachineInfo));
+			}
+			catch (IOException e)
+			{
+				System.out.println("Error openning " + vendingMachineInfo);
+			}
+			try
+			{
+				outputStream.writeObject(snackMachine);
+				outputStream.writeObject(drinkMachine);
+				System.out.println("records saved as " + vendingMachineInfo);
+				outputStream.close();
+			}
+			catch(IOException e)
+			{
+				System.out.println("error writing to " + vendingMachineInfo);
+			}
+			System.exit(0);
+		}
 	}
 }
