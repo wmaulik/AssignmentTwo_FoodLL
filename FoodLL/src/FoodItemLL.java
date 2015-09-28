@@ -3,9 +3,11 @@
  * @author Writesh Maulik
  *
  */
-public class FoodItemLL {
+public class FoodItemLL 
+{
 
-	public FoodItemLL() {
+	public FoodItemLL() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 

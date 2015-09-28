@@ -13,8 +13,11 @@ public class FoodItem implements Serializable
 	 */
 	private static final long serialVersionUID = 3222232600479325465L;
 	private String name;
-	private String nutrition;
 	private double price;
+	private int quantity;
+	private String description;
+	private int size;
+	private boolean specialOrder;
 	
 	/**
 	 * creates a food or drink items that have the attributes:
@@ -23,11 +26,14 @@ public class FoodItem implements Serializable
 	 * String Price
 	 * 
 	 */
-	public FoodItem(String aName, String nutritionInfo, double aPrice)
+	public FoodItem(String aName, String newDescription, double aPrice, int aSize)
 	{
-		name = aName;
-		nutrition = nutritionInfo;
-		price = aPrice;
+		this.name = aName;
+		this.description = newDescription;
+		this.price = aPrice;
+		this.quantity = 0;
+		this.size = aSize;
+		this.specialOrder = false;
 	}
 	
 	/**
@@ -49,17 +55,17 @@ public class FoodItem implements Serializable
 	/**
 	 * sets nutrition information
 	 */
-	public void setNutrition(String nutritionInfo)
+	public void setDescription(String aDescription)
 	{
-		this.nutrition = nutritionInfo;
+		this.description = aDescription;
 	}
 	
 	/**
 	 * gets nutrition information
 	 */
-	public String getNutrition()
+	public String getDescription()
 	{
-		return this.nutrition;
+		return this.description;
 	}
 	
 	/**
@@ -79,12 +85,61 @@ public class FoodItem implements Serializable
 	}
 	
 	/**
+	 * sets quantity
+	 */
+	public void setQuantity(double aQuantity)
+	{
+		aQuantity = this.quantity;
+	}
+	
+	/**
+	 * get quantity
+	 */
+	public int getQuantity()
+	{
+		return this.quantity;
+	}
+	
+	/**
+	 * set size
+	 */
+	public void setSize(int aSize)
+	{
+		this.size = aSize;
+	}
+	
+	/**
+	 * get size
+	 */
+	public int getSize()
+	{
+		return this.size;
+	}
+	
+	/**
+	 * set special order
+	 */
+	public void setSpeicalOrder(boolean aSpecialOrder)
+	{
+		this.specialOrder = aSpecialOrder;
+	}
+	
+	/**
+	 * get special order
+	 */
+	public boolean getSpecialOrder()
+	{
+		return this.specialOrder;
+	}
+	
+	/**
 	 * displays all the variables
 	 */
 	public String toString()
 	{
 		return "Name: " + this.getName() + "\n"
-				+ "Nutrition Information: " + this.getNutrition() + "\n"
-				+ "price $" + this.getPrice();
+				+ "Nutrition Information: " + this.getDescription() + "\n"
+				+ "price $" + this.getPrice() + "\n"
+				+ "quantity " + this.getQuantity();
 	}
 }

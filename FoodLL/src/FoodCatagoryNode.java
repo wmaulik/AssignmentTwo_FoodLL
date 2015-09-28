@@ -4,9 +4,11 @@
  *
  */
 
-public class FoodCatagoryNode {
+public class FoodCatagoryNode 
+{
 
-	public FoodCatagoryNode() {
+	public FoodCatagoryNode() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 
